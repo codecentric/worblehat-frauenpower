@@ -8,7 +8,7 @@ package de.codecentric.psd.worblehat.web.command;
  */
 public class BookBorrowFormData {
 
-	private String isbn;
+	private String isbn; // isbn 10stellig
 	private String email;
 
 	/**
