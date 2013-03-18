@@ -24,7 +24,9 @@
 		<br />
             Year:<form:input id="year" path="year" />
 		<form:errors path="year" />
-
+        <br />
+            Abstract:<form:input id="abstract" path="abstract" />
+		<form:errors path="abstract" />
 		<br />
 		<input type="submit" id="addBook" value="Add Book" />
 		<hr/>
