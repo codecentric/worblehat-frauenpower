@@ -30,8 +30,10 @@ public class ValidateAddBook implements Validator {
 
 		BookDataFormData cmd = (BookDataFormData) target;
 
-		ValidationUtils.rejectIfEmptyOrWhitespace(errors, "title", "empty");
-		ValidationUtils.rejectIfEmptyOrWhitespace(errors, "author", "empty");
+		ValidationUtils.rejectIfEmptyOrWhitespace(errors, "title",
+				"empty, please enter a valid title");
+		ValidationUtils.rejectIfEmptyOrWhitespace(errors, "author",
+				"empty, please enter a valid author");
 
 		checkThatYearIsFilledAndValid(errors, cmd);
 		checkThatIsbnIsFilledAndValid(errors, cmd);
@@ -41,7 +43,8 @@ public class ValidateAddBook implements Validator {
 
 	private void checkThatEditionisFilledAndValid(Errors errors,
 			BookDataFormData cmd) {
-		ValidationUtils.rejectIfEmptyOrWhitespace(errors, "edition", "empty");
+		ValidationUtils.rejectIfEmptyOrWhitespace(errors, "edition",
+				"empty, please enter a valid edition");
 		if (!errors.hasFieldErrors("edition")) {
 			if (!StringUtils.isNumeric(cmd.getEdition())) {
 				errors.rejectValue("edition", "notvalid");
@@ -51,7 +54,8 @@ public class ValidateAddBook implements Validator {
 
 	private void checkThatIsbnIsFilledAndValid(Errors errors,
 			BookDataFormData cmd) {
-		ValidationUtils.rejectIfEmptyOrWhitespace(errors, "isbn", "empty");
+		ValidationUtils.rejectIfEmptyOrWhitespace(errors, "isbn",
+				"empty, please enter a valid isbn");
 		if (!errors.hasFieldErrors("isbn")) {
 			ISBNValidator isbnValidator = new ISBNValidator();
 			if (!isbnValidator.isValid(cmd.getIsbn())) {
@@ -62,12 +66,13 @@ public class ValidateAddBook implements Validator {
 
 	private void checkThatYearIsFilledAndValid(Errors errors,
 			BookDataFormData cmd) {
-		ValidationUtils.rejectIfEmptyOrWhitespace(errors, "year", "empty");
+		ValidationUtils.rejectIfEmptyOrWhitespace(errors, "year",
+				"empty, please enter a valid year");
 		if (!errors.hasFieldErrors("year")) {
 			if (!StringUtils.isNumeric(cmd.getYear())) {
-				errors.rejectValue("year", "notvalid");
+				errors.rejectValue("year", "Only numbers allowed, eg 1999");
 			} else if (StringUtils.length(cmd.getYear()) != 4) {
-				errors.rejectValue("year", "invalid.length");
+				errors.rejectValue("year", "Must have 4 numbers, eg 1999");
 			}
 		}
 	}
