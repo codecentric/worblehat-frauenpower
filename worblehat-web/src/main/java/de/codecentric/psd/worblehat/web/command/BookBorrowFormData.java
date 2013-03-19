@@ -28,15 +28,17 @@ public class BookBorrowFormData {
 	 */
 	public BookBorrowFormData(String isbn, String email) {
 
-		if (isbn != null)
+		if (isbn != null) {
 			this.isbn = isbn.replaceAll(" ", "");
-		else
+		} else {
 			this.isbn = isbn;
+		}
 
-		if (email != null)
+		if (email != null) {
 			this.email = email.replaceAll(" ", "");
-		else
+		} else {
 			this.email = email;
+		}
 	}
 
 	public String getIsbn() {
@@ -44,10 +46,11 @@ public class BookBorrowFormData {
 	}
 
 	public void setIsbn(String isbn) {
-		if (isbn != null)
+		if (isbn != null) {
 			this.isbn = isbn.replaceAll(" ", "");
-		else
+		} else {
 			this.isbn = isbn;
+		}
 	}
 
 	public String getEmail() {
@@ -55,10 +58,11 @@ public class BookBorrowFormData {
 	}
 
 	public void setEmail(String email) {
-		if (email != null)
+		if (email != null) {
 			this.email = email.replaceAll(" ", "");
-		else
+		} else {
 			this.email = email;
+		}
 	}
 
 }

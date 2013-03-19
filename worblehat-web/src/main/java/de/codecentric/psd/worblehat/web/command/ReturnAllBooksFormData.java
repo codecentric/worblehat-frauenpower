@@ -20,10 +20,11 @@ public class ReturnAllBooksFormData {
 	 *            the user email address
 	 */
 	public ReturnAllBooksFormData(String emailAddress) {
-		if (emailAddress != null)
+		if (emailAddress != null) {
 			this.emailAddress = emailAddress.replaceAll(" ", "");
-		else
+		} else {
 			this.emailAddress = emailAddress;
+		}
 	}
 
 	private String emailAddress;
@@ -33,10 +34,11 @@ public class ReturnAllBooksFormData {
 	}
 
 	public void setEmailAddress(String emailAddress) {
-		if (emailAddress != null)
+		if (emailAddress != null) {
 			this.emailAddress = emailAddress.replaceAll(" ", "");
-		else
+		} else {
 			this.emailAddress = emailAddress;
+		}
 	}
 
 }
