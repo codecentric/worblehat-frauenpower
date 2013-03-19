@@ -5,7 +5,7 @@
 	<changeSet id="2.2.0-abstract" author="daniela.lambertz">
 
 <addColumn tableName="Book">
-    <column name="abstract" type="varchar(500)"/>
+    <column name="abstract" type="text"/>
 </addColumn>
 
 </changeSet>
