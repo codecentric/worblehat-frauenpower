@@ -30,21 +30,29 @@ public class ValidateAddBook implements Validator {
 
 		BookDataFormData cmd = (BookDataFormData) target;
 
-		ValidationUtils.rejectIfEmptyOrWhitespace(errors, "title",
-				"empty, please enter a valid title");
-		ValidationUtils.rejectIfEmptyOrWhitespace(errors, "author",
-				"empty, please enter a valid author");
+		ValidationUtils.rejectIfEmptyOrWhitespace(errors, "title", "empty");
+		ValidationUtils.rejectIfEmptyOrWhitespace(errors, "author", "empty");
 
 		checkThatYearIsFilledAndValid(errors, cmd);
 		checkThatIsbnIsFilledAndValid(errors, cmd);
 		checkThatEditionisFilledAndValid(errors, cmd);
+		checkThatAbstractisFilledAndValid(errors, cmd);
 
+	}
+
+	private void checkThatAbstractisFilledAndValid(Errors errors,
+			BookDataFormData cmd) {
+		ValidationUtils.rejectIfEmptyOrWhitespace(errors, "abstract", "empty");
+		if (!errors.hasFieldErrors("abstract")) {
+			if (StringUtils.length(cmd.getAbstract()) > 5000) {
+				errors.rejectValue("abstract", "letters");
+			}
+		}
 	}
 
 	private void checkThatEditionisFilledAndValid(Errors errors,
 			BookDataFormData cmd) {
-		ValidationUtils.rejectIfEmptyOrWhitespace(errors, "edition",
-				"empty, please enter a valid edition");
+		ValidationUtils.rejectIfEmptyOrWhitespace(errors, "edition", "empty");
 		if (!errors.hasFieldErrors("edition")) {
 			if (!StringUtils.isNumeric(cmd.getEdition())) {
 				errors.rejectValue("edition", "notvalid");
@@ -54,8 +62,7 @@ public class ValidateAddBook implements Validator {
 
 	private void checkThatIsbnIsFilledAndValid(Errors errors,
 			BookDataFormData cmd) {
-		ValidationUtils.rejectIfEmptyOrWhitespace(errors, "isbn",
-				"empty, please enter a valid isbn");
+		ValidationUtils.rejectIfEmptyOrWhitespace(errors, "isbn", "empty");
 		if (!errors.hasFieldErrors("isbn")) {
 			ISBNValidator isbnValidator = new ISBNValidator();
 			if (!isbnValidator.isValid(cmd.getIsbn())) {
@@ -66,13 +73,12 @@ public class ValidateAddBook implements Validator {
 
 	private void checkThatYearIsFilledAndValid(Errors errors,
 			BookDataFormData cmd) {
-		ValidationUtils.rejectIfEmptyOrWhitespace(errors, "year",
-				"empty, please enter a valid year");
+		ValidationUtils.rejectIfEmptyOrWhitespace(errors, "year", "empty");
 		if (!errors.hasFieldErrors("year")) {
 			if (!StringUtils.isNumeric(cmd.getYear())) {
-				errors.rejectValue("year", "Only numbers allowed, eg 1999");
+				errors.rejectValue("year", "notvalid");
 			} else if (StringUtils.length(cmd.getYear()) != 4) {
-				errors.rejectValue("year", "Must have 4 numbers, eg 1999");
+				errors.rejectValue("year", "invalid.length");
 			}
 		}
 	}
