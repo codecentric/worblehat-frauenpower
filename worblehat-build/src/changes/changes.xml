@@ -31,5 +31,13 @@
 				Show version of worblehat.
 			</action>
 		</release>
+		<release version="2.3.2" date="2013-03-19"
+			description="Release with much improved functionality">
+			<action dev="betaworblers" type="update">
+				Changed type of database column abstract to 5000 characters.
+				Added error catching for abstract.
+				Changed view for abstract in AddBook function.
+			</action>
+		</release>
 	</body>
 </document>
