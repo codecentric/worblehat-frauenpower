@@ -29,6 +29,7 @@ public class ValidateAddBookTest {
 		cmd.setIsbn("90-70002-34-5");
 		cmd.setTitle("title");
 		cmd.setYear("2010");
+		cmd.setAbstract("This book is nice.");
 	}
 
 	@Test
@@ -68,7 +69,8 @@ public class ValidateAddBookTest {
 		Errors errors = new BindException(cmd, "cmdBookdData");
 		validateAddBook.validate((BookDataFormData) cmd, errors);
 		assertThat(errors.getErrorCount(), is(0));
-		String errorFieldValue = errors.getFieldValue("title").toString();;
+		String errorFieldValue = errors.getFieldValue("title").toString();
+		;
 		assertThat(errorFieldValue, is(title));
 	}
 
