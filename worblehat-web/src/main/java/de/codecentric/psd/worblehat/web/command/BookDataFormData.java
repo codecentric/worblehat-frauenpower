@@ -11,6 +11,7 @@ public class BookDataFormData {
 	private String year;
 	private String isbn;
 	private String author;
+	private String abstr;
 
 	public String getYear() {
 		return year;
@@ -34,6 +35,14 @@ public class BookDataFormData {
 
 	public void setAuthor(String author) {
 		this.author = author;
+	}
+
+	public String getAbstract() {
+		return abstr;
+	}
+
+	public void setAbstract(String abstr) {
+		this.abstr = abstr;
 	}
 
 	public String getTitle() {

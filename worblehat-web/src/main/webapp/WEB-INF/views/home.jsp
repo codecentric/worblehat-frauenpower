@@ -7,7 +7,7 @@
 <title>Worblehat Bookmanager</title>
 </head>
 <body>
-	<h1 id="welcome_heading">Worblehat Bookmanager</h1>
+	<h1 id="welcome_heading">Worblehat Bookmanager - <spring:message code="versionsnumer"></spring:message></h1>
 
 <ul>
 <li><a href="<spring:url value="/bookList" htmlEscape="true" />">Show all Books</a></li>

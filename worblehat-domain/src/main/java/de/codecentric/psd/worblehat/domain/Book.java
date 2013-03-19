@@ -4,6 +4,7 @@ import java.io.Serializable;
 import java.util.Date;
 
 import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -34,6 +35,8 @@ public class Book implements Serializable {
 	private String edition;
 	private String isbn;
 	private int year;
+	@Column(name = "abstract")
+	private String abstr;
 
 	@OneToOne(cascade = CascadeType.ALL, orphanRemoval = true)
 	private Borrowing currentBorrowing;
@@ -60,13 +63,14 @@ public class Book implements Serializable {
 	 *            the year
 	 */
 	public Book(String title, String author, String edition, String isbn,
-			int year) {
+			int year, String abstr) {
 		super();
 		this.title = title;
 		this.author = author;
 		this.edition = edition;
 		this.isbn = isbn;
 		this.year = year;
+		this.abstr = abstr;
 	}
 
 	public long getId() {
@@ -91,6 +95,10 @@ public class Book implements Serializable {
 
 	public int getYear() {
 		return year;
+	}
+
+	public String getAbstract() {
+		return abstr;
 	}
 
 	public Borrowing getCurrentBorrowing() {

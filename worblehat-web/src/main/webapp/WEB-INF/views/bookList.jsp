@@ -15,8 +15,9 @@
 			<th>Author</th>
 			<th>Year</th>
 			<th>Edition</th>
-			<th>ISBN</th>
+			<th>ISBN</th>			
 			<th>Borrower</th>
+			<th>Abstract</th>
 		</tr>
 	</thead>
 	<tbody>
@@ -26,8 +27,9 @@
 			<td>${book.author}</td>
 			<td>${book.year}</td>
 			<td>${book.edition}</td>
-			<td>${book.isbn}</td>
+			<td>${book.isbn}</td>			
 			<td>${book.currentBorrowing.borrowerEmailAddress}</td>
+			<td>${book.abstract}</td>
 		</tr>
 	</c:forEach>
 	</tbody>
