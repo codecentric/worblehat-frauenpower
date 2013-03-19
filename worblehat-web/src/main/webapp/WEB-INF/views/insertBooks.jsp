@@ -25,7 +25,7 @@
             Year:<form:input id="year" path="year" />
 		<form:errors path="year" />
         <br />
-            Abstract:<form:input id="abstract" path="abstract" />
+            Abstract:<form:textarea id="abstract" path="abstract" cols="70" rows="5"/>
 		<form:errors path="abstract" />
 		<br />
 		<input type="submit" id="addBook" value="Add Book" />
