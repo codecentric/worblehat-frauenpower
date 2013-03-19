@@ -18,7 +18,10 @@ public class BookDataFormData {
 	}
 
 	public void setYear(String year) {
-		this.year = year;
+		if (year != null)
+			this.year = year.replaceAll(" ", "");
+		else
+			this.year = year;
 	}
 
 	public String getIsbn() {
@@ -26,7 +29,10 @@ public class BookDataFormData {
 	}
 
 	public void setIsbn(String isbn) {
-		this.isbn = isbn;
+		if (isbn != null)
+			this.isbn = isbn.replaceAll(" ", "");
+		else
+			this.isbn = isbn;
 	}
 
 	public String getAuthor() {

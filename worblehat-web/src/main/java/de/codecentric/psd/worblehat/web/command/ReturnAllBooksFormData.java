@@ -8,7 +8,6 @@ package de.codecentric.psd.worblehat.web.command;
  */
 public class ReturnAllBooksFormData {
 
-	
 	/**
 	 * Empty constructor, required by Spring Framework.
 	 */
@@ -17,10 +16,14 @@ public class ReturnAllBooksFormData {
 	}
 
 	/**
-	 * @param emailAddress the user email address
+	 * @param emailAddress
+	 *            the user email address
 	 */
 	public ReturnAllBooksFormData(String emailAddress) {
-		this.emailAddress = emailAddress;
+		if (emailAddress != null)
+			this.emailAddress = emailAddress.replaceAll(" ", "");
+		else
+			this.emailAddress = emailAddress;
 	}
 
 	private String emailAddress;
@@ -30,7 +33,10 @@ public class ReturnAllBooksFormData {
 	}
 
 	public void setEmailAddress(String emailAddress) {
-		this.emailAddress = emailAddress;
+		if (emailAddress != null)
+			this.emailAddress = emailAddress.replaceAll(" ", "");
+		else
+			this.emailAddress = emailAddress;
 	}
 
 }

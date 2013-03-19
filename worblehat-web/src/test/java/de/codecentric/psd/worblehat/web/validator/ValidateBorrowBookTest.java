@@ -20,12 +20,29 @@ public class ValidateBorrowBookTest {
 
 	private ValidateBorrowBook validateAddBook;
 
-	private BookBorrowFormData cmd = new BookBorrowFormData(VALID_ISBN, VALID_EMAIL);
+	private BookBorrowFormData cmd = new BookBorrowFormData(VALID_ISBN,
+			VALID_EMAIL);
 
 	@Before
 	public void setUp() {
 		MockitoAnnotations.initMocks(this);
 		this.validateAddBook = new ValidateBorrowBook();
+	}
+
+	@Test
+	public void shouldWorkForWhitespaceInEmail() {
+		Errors errors = new BindException(cmd, "bookBorrowCmd");
+		cmd.setEmail("abc @ gmx . de");
+		validateAddBook.validate(cmd, errors);
+		assertThat(errors.getErrorCount(), is(0));
+	}
+
+	@Test
+	public void shouldWorkForWhitespaceInISBN() {
+		Errors errors = new BindException(cmd, "bookBorrowCmd");
+		cmd.setIsbn("90-70 002-34-5");
+		validateAddBook.validate(cmd, errors);
+		assertThat(errors.getErrorCount(), is(0));
 	}
 
 	@Test
