@@ -24,5 +24,12 @@
 				Return all borrowed books by one member.
 			</action>
 		</release>
+		<release version="2.2.0" date="2013-03-19"
+			description="Release with much improved functionality">
+			<action dev="betaworblers" type="update">
+				Add an abstract for a book and show it in the list.
+				Show version of worblehat.
+			</action>
+		</release>
 	</body>
 </document>

@@ -37,11 +37,7 @@
          UserDatabaseRealm to authenticate users
     -->
     <Resource auth="Container" description="User database that can be updated and saved" factory="org.apache.catalina.users.MemoryUserDatabaseFactory" name="UserDatabase" pathname="conf/tomcat-users.xml" type="org.apache.catalina.UserDatabase"/>
-	<Resource name="jdbc/worblehat" type="javax.sql.DataSource"
-    		maxActive="4" maxIdle="2" maxWait="5000" username="worblehat"
-    		password="worblehat" driverClassName="com.mysql.jdbc.Driver"
-    		url="jdbc:mysql://localhost:3306/worblehat" 
-    		validationQuery="select 1" /> 		  
+	<Resource driverClassName="com.mysql.jdbc.Driver" maxActive="4" maxIdle="2" maxWait="5000" name="jdbc/worblehat" password="worblehat" type="javax.sql.DataSource" url="jdbc:mysql://localhost:3306/worblehat" username="worblehat" validationQuery="select 1"/> 		  
 
   </GlobalNamingResources>
 
