@@ -71,6 +71,15 @@ public class BookRepository {
 		return false;
 	}
 
+	public void deleteBook(Book book) {
+		Query query = em
+				.createQuery("delete from Book where author = :author and isbn = :isbn and title = :title");
+		query.setParameter("author", book.getAuthor());
+		query.setParameter("isbn", book.getIsbn());
+		query.setParameter("title", book.getTitle());
+		query.executeUpdate();
+	}
+
 	/**
 	 * Persist a book entity to DB.
 	 * 
