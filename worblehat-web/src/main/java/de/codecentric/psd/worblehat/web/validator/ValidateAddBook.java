@@ -24,10 +24,10 @@ public class ValidateAddBook implements Validator {
 	@Override
 	public void validate(Object target, Errors errors) {
 
-		if (!supports(target.getClass()))
+		if (!supports(target.getClass())) {
 			throw new IllegalArgumentException("Validation of classs '"
 					+ target.getClass() + "' is not supported");
-
+		}
 		BookDataFormData cmd = (BookDataFormData) target;
 
 		ValidationUtils.rejectIfEmptyOrWhitespace(errors, "title", "empty");
