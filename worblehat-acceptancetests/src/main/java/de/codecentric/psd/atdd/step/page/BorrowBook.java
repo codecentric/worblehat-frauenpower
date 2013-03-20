@@ -12,14 +12,14 @@ import de.codecentric.psd.atdd.library.Config;
 import de.codecentric.psd.atdd.library.SeleniumAdapter;
 
 public class BorrowBook {
-	
+
 	private WebDriver driver;
 
 	@Inject
 	public BorrowBook(SeleniumAdapter selenium) {
 		driver = selenium.getDriver();
 	}
-	
+
 	// *******************
 	// *** G I V E N *****
 	// *******************
@@ -27,21 +27,28 @@ public class BorrowBook {
 	// *****************
 	// *** W H E N *****
 	// *****************
-	
+
 	@When("user <user> borrows the book <isbn>")
-	public void whenUseruserBorrowsTheBookisbn(@Named("user") String user, @Named("isbn") String isbn){
+	public void whenUseruserBorrowsTheBookisbn(@Named("user") String user,
+			@Named("isbn") String isbn) {
 		openBorrowBookPage();
 		typeIntoField("email", user);
 		typeIntoField("isbn", isbn);
 		submitForm();
+		try {
+			Thread.sleep(1000);
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
-	
+
 	// *****************
 	// *** T H E N *****
 	// *****************
-	
+
 	// *****************
-	// *** U T I L ***** 
+	// *** U T I L *****
 	// *****************
 
 	private void submitForm() {
@@ -52,7 +59,7 @@ public class BorrowBook {
 		driver.get(Config.getApplicationURL() + "/"
 				+ Config.getApplicationContext() + "/borrow");
 	}
-	
+
 	private void typeIntoField(String id, String value) {
 		WebElement element = driver.findElement(By.id(id));
 		element.clear();
