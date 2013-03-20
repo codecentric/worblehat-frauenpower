@@ -47,5 +47,12 @@
 				Implementation: whitespace trimming in ISBN, Email and Year
 			</action>
 		</release>
+		<release version="2.5.0" date="2013-03-20"
+			description="Release with much improved functionality">
+			<action dev="betaworblers" type="update">
+				WB-117: ISBN 13
+				WB-127: no double ISBN
+			</action>
+		</release>
 	</body>
 </document>
