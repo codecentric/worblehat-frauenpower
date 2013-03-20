@@ -7,6 +7,8 @@ import static org.junit.Assert.assertThat;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
+import java.util.Arrays;
+
 import javax.servlet.http.HttpServletRequest;
 
 import org.junit.Before;
@@ -17,6 +19,7 @@ import org.mockito.MockitoAnnotations;
 import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
 
+import de.codecentric.psd.worblehat.domain.Book;
 import de.codecentric.psd.worblehat.domain.BookFactory;
 import de.codecentric.psd.worblehat.domain.BookRepository;
 import de.codecentric.psd.worblehat.web.command.BookDataFormData;
@@ -73,4 +76,23 @@ public class InsertBookControllerTest {
 				"ISBN-123132-21", 1999, "Test");
 		assertThat(path, is("/bookList"));
 	}
+
+	@Test
+	public void shouldCheckISBN() {
+		BookDataFormData cmd = new BookDataFormData();
+		cmd.setIsbn("123456789X");
+		cmd.setAuthor("Horst Tester");
+		cmd.setEdition("2");
+		cmd.setTitle("Test with JUnit");
+		cmd.setYear("1999");
+		cmd.setAbstract("Test");
+		when(bookRepository.findBooksByISBN(cmd.getIsbn())).thenReturn(
+				Arrays.asList(new Book("ABC", "Ich", "1", "123456789X", 1999,
+						"Test")));
+		String path = insertBookController.processSubmit(mockRequest,
+				mockModelMap, cmd, mockBindingResult);
+
+		verifyZeroInteractions(bookFactory);
+	}
+
 }
