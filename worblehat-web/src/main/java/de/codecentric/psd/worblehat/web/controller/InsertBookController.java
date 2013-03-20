@@ -62,7 +62,9 @@ public class InsertBookController {
 		if (result.hasErrors()) {
 			return "/insertBooks";
 		} else {
-			if (bookRepository.findBooksByISBN(cmd.getIsbn()).isEmpty()) {
+			if (bookRepository.findBooksByISBN(cmd.getIsbn()).isEmpty()
+					|| bookRepository.isBookInRepository(cmd.getAuthor(),
+							cmd.getIsbn(), cmd.getTitle())) {
 
 				bookFactory.createBook(cmd.getTitle(), cmd.getAuthor(),
 						cmd.getEdition(), cmd.getIsbn(),
@@ -72,6 +74,7 @@ public class InsertBookController {
 				List<Book> books = bookRepository.findAllBooks();
 				modelMap.addAttribute("books", books);
 			} else {
+
 				result.rejectValue("isbn", "present");
 				return "/insertBooks";
 			}
@@ -79,5 +82,4 @@ public class InsertBookController {
 			return "/bookList";
 		}
 	}
-
 }

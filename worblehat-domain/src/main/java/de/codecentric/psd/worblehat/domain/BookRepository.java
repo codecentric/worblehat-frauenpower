@@ -59,6 +59,18 @@ public class BookRepository {
 		return (Book) query.getSingleResult();
 	}
 
+	public boolean isBookInRepository(String author, String isbn, String title) {
+		Query query = em
+				.createQuery("from Book where author = :author and isbn = :isbn and title = :title ");
+		query.setParameter("author", author);
+		query.setParameter("isbn", isbn);
+		query.setParameter("title", title);
+		if (!query.getResultList().isEmpty()) {
+			return true;
+		}
+		return false;
+	}
+
 	/**
 	 * Persist a book entity to DB.
 	 * 
