@@ -37,10 +37,9 @@ public class ValidateBorrowBook implements Validator {
 	private void checkThatUserEmailAddressIsFilledAndValid(Errors errors,
 			BookBorrowFormData cmd) {
 		ValidationUtils.rejectIfEmptyOrWhitespace(errors, "email", "empty");
-		if (!errors.hasFieldErrors("email")) {
-			if (!EmailValidator.getInstance().isValid(cmd.getEmail())) {
-				errors.rejectValue("email", "notvalid");
-			}
+		if (!errors.hasFieldErrors("email")
+				&& !EmailValidator.getInstance().isValid(cmd.getEmail())) {
+			errors.rejectValue("email", "notvalid");
 		}
 	}
 
