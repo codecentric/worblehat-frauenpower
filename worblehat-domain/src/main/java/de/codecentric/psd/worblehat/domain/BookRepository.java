@@ -48,8 +48,8 @@ public class BookRepository {
 	 */
 	@SuppressWarnings("unchecked")
 	public List<Book> findBooksByISBN(String isbn) {
-		Query query = em.createQuery("form Book where isbn =? ").setParameter(
-				1, isbn);
+		Query query = em.createQuery("from Book where isbn = :isbn ");
+		query.setParameter("isbn", isbn);
 		return query.getResultList();
 	}
 

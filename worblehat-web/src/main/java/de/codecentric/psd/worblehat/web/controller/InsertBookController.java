@@ -62,14 +62,19 @@ public class InsertBookController {
 		if (result.hasErrors()) {
 			return "/insertBooks";
 		} else {
+			if (bookRepository.findBooksByISBN(cmd.getIsbn()).isEmpty()) {
 
-			bookFactory.createBook(cmd.getTitle(), cmd.getAuthor(),
-					cmd.getEdition(), cmd.getIsbn(),
-					Integer.parseInt(cmd.getYear()), cmd.getAbstract());
-			LOG.debug("new book instance is created: " + cmd.getIsbn());
+				bookFactory.createBook(cmd.getTitle(), cmd.getAuthor(),
+						cmd.getEdition(), cmd.getIsbn(),
+						Integer.parseInt(cmd.getYear()), cmd.getAbstract());
+				LOG.debug("new book instance is created: " + cmd.getIsbn());
 
-			List<Book> books = bookRepository.findAllBooks();
-			modelMap.addAttribute("books", books);
+				List<Book> books = bookRepository.findAllBooks();
+				modelMap.addAttribute("books", books);
+			} else {
+				result.rejectValue("isbn", "present");
+				return "/insertBooks";
+			}
 
 			return "/bookList";
 		}
