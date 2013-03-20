@@ -23,11 +23,11 @@ public class ValidateBorrowBook implements Validator {
 
 	@Override
 	public void validate(Object target, Errors errors) {
-		if (!supports(target.getClass()))
+		if (!supports(target.getClass())) {
 			throw new IllegalArgumentException(
 					"Not supported FormData for this validator: "
 							+ target.getClass());
-
+		}
 		BookBorrowFormData cmd = (BookBorrowFormData) target;
 
 		checkThatIsbnIsFilledAndValid(errors, cmd);

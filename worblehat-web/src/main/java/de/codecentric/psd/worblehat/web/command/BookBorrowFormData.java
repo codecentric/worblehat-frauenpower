@@ -28,6 +28,7 @@ public class BookBorrowFormData {
 	 */
 	public BookBorrowFormData(String isbn, String email) {
 		boolean exists = isbn != null;
+
 		if (exists) {
 			this.isbn = isbn.replaceAll(" ", "");
 		} else {
