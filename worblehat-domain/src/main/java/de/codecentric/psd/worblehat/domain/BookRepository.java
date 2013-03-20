@@ -120,5 +120,4 @@ public class BookRepository {
 		Query query = em.createNamedQuery("findAllBooks");
 		return query.getResultList();
 	}
-
 }
