@@ -34,7 +34,9 @@ public class ReturnAllBooksFormData {
 	}
 
 	public void setEmailAddress(String emailAddress) {
-		if (emailAddress != null) {
+
+		boolean exists = emailAddress != null;
+		if (exists) {
 			this.emailAddress = emailAddress.replaceAll(" ", "");
 		} else {
 			this.emailAddress = emailAddress;
