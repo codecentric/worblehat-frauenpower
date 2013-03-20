@@ -27,7 +27,6 @@ public class BookBorrowFormData {
 	 *            the user email address
 	 */
 	public BookBorrowFormData(String isbn, String email) {
-
 		boolean exists = isbn != null;
 
 		if (exists) {
@@ -36,7 +35,8 @@ public class BookBorrowFormData {
 			this.isbn = isbn;
 		}
 
-		if (email != null) {
+		exists = email != null;
+		if (exists) {
 			this.email = email.replaceAll(" ", "");
 		} else {
 			this.email = email;
@@ -48,7 +48,9 @@ public class BookBorrowFormData {
 	}
 
 	public void setIsbn(String isbn) {
-		if (isbn != null) {
+
+		boolean exists = isbn != null;
+		if (exists) {
 			this.isbn = isbn.replaceAll(" ", "");
 		} else {
 			this.isbn = isbn;
