@@ -60,6 +60,35 @@ public class Library {
 		}
 	}
 
+	@Given("a user <user> has borrowed books <isbns> at <borrowDate>")
+	public void createListOfBorrowedBooksByDate(@Named("user") String user,
+			@Named("isbns") String isbns, @Named("borrowDate") String borrowDate)
+	// TODO: klappt String für date??
+			throws SQLException {
+		List<String> isbnList = getListOfItems(isbns);
+		List<String> borrowDateList = getListOfItems(borrowDate);
+		int currentIndex = 0;
+
+		for (String isbn : isbnList) {
+			database.execute("INSERT INTO Book(title,author,edition,isbn,year,abstract) VALUES "
+					+ "('Title', 'Author', '1', '"
+					+ isbn
+					+ "', 2011, 'description')");
+			String bookId = database.getResult("SELECT  LAST_INSERT_ID()");
+			database.execute("INSERT INTO Borrowing(borrowDate, borrowerEmailAddress) VALUES "
+					+ "('"
+					+ borrowDateList.get(currentIndex)
+					+ "', '"
+					+ user
+					+ "')");
+			String borrowingId = database.getResult("SELECT  LAST_INSERT_ID()");
+			database.execute("UPDATE Book SET currentBorrowing_id = "
+					+ borrowingId + " WHERE id = " + bookId);
+			currentIndex++;
+
+		}
+	}
+
 	@Given("a user <user2> has borrowed books <isbns2>")
 	public void createListOfBorrowedBooks2(@Named("user2") String user,
 			@Named("isbns2") String isbns) throws SQLException {
