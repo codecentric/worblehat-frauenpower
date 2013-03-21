@@ -35,33 +35,45 @@ public class InsertBook {
 	@When("a book with ISBN <isbn> is added")
 	public void whenABookWithISBNisbnIsAdded(@Named("isbn") String isbn) {
 		openInsertBooksPage();
-		fillInsertBookForm("Title", "2", isbn, "Author", "2002");
+		fillInsertBookForm("Title", "2", isbn, "Author", "2002", "description");
 		submitForm();
+		try {
+			Thread.sleep(1000);
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 
 	@When("the librarian tries to add a book with an <attribute> of <value>")
 	public void addABook(@Named("attribute") String attribute,
 			@Named("value") String value) {
 		openInsertBooksPage();
-		fillInsertBookForm("Title", "1", "123456789X", "Author", "2002");
+		fillInsertBookForm("Title", "1", "123456789X", "Author", "2002",
+				"description");
 		typeIntoField(getIdForAttribute(attribute), value);
 		submitForm();
+		try {
+			Thread.sleep(1000);
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 
 	// *****************
 	// *** T H E N *****
 	// *****************
 
-
 	@Then("the page contains error message <message>")
-	public void thenThePageContainsErrorMessagemessage(@Named("message") String message){
+	public void thenThePageContainsErrorMessagemessage(
+			@Named("message") String message) {
 		assertThat(driver.getPageSource(), containsString(message));
 	}
 
 	// *****************
-	// *** U T I L ***** 
+	// *** U T I L *****
 	// *****************
-
 
 	private void setTitle(String titel) {
 		typeIntoField("title", titel);
@@ -83,6 +95,10 @@ public class InsertBook {
 		typeIntoField("isbn", isbn);
 	}
 
+	private void setAbstract(String description) {
+		typeIntoField("abstract", description);
+	}
+
 	private void typeIntoField(String id, String value) {
 		WebElement element = driver.findElement(By.id(id));
 		element.clear();
@@ -90,12 +106,13 @@ public class InsertBook {
 	}
 
 	private void fillInsertBookForm(String titel, String edition, String isbn,
-			String author, String year) {
+			String author, String year, String description) {
 		setTitle(titel);
 		setEdition(edition);
 		setIsbn(isbn);
 		setAuthor(author);
 		setYear(year);
+		setAbstract(description);
 	}
 
 	private void submitForm() {
