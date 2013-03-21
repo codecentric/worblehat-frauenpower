@@ -35,6 +35,9 @@ public class DeleteBookController {
 	@Inject
 	private BookRepository bookRepository;
 
+	/**
+	 * 
+	 */
 	public DeleteBookController() {
 		super();
 	}
