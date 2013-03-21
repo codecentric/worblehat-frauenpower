@@ -40,7 +40,7 @@ public class Borrowing implements Serializable {
 
 	/**
 	 * 
-	 * @param borrower
+	 * @param borrowerEmailAddress
 	 *            EmailAddress email address of borrower
 	 * @param borrowDate
 	 *            data a book was borrowed
@@ -51,6 +51,9 @@ public class Borrowing implements Serializable {
 		this.borrowDate = borrowDate;
 	}
 
+	/**
+	 * 
+	 */
 	private Borrowing() {
 		// for JPA
 	}

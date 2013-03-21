@@ -11,7 +11,7 @@ import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
 /**
- * Repo for Book
+ * Repo for Book.
  * 
  * @author mahmut.can
  * 
@@ -90,6 +90,11 @@ public class BookRepository {
 		return false;
 	}
 
+	/**
+	 * 
+	 * @param book
+	 *            book to delete
+	 */
 	public void deleteBook(Book book) {
 		Query query = em.createQuery("delete from Book where isbn = :isbn");
 		// query.setParameter("author", book.getAuthor());

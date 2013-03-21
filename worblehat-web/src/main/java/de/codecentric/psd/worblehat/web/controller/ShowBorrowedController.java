@@ -12,10 +12,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import de.codecentric.psd.worblehat.domain.Book;
-import de.codecentric.psd.worblehat.domain.BookRepository;
 import de.codecentric.psd.worblehat.domain.BookService;
 import de.codecentric.psd.worblehat.web.command.ShowBorrowedFormData;
-import de.codecentric.psd.worblehat.web.validator.ValidateReturnAllBooks;
 
 /**
  * Controller class for the book table result.
@@ -34,14 +32,18 @@ import de.codecentric.psd.worblehat.web.validator.ValidateReturnAllBooks;
 @RequestMapping("/showBorrowed")
 public class ShowBorrowedController {
 
-	@Inject
-	private BookRepository bookRepository;
+	// @Inject
+	// private BookRepository bookRepository;
 
 	@Inject
 	private BookService bookService;
 
-	ValidateReturnAllBooks validateReturnAllBooks = new ValidateReturnAllBooks();
+	// ValidateReturnAllBooks validateReturnAllBooks = new
+	// ValidateReturnAllBooks();
 
+	/**
+	 * 
+	 */
 	public ShowBorrowedController() {
 		super();
 	}
@@ -51,9 +53,10 @@ public class ShowBorrowedController {
 	 * @param bookRepository
 	 *            current book repository
 	 */
-	public ShowBorrowedController(BookRepository bookRepository) {
-		this.bookRepository = bookRepository;
-	}
+	/*
+	 * public ShowBorrowedController(BookRepository bookRepository) {
+	 * this.bookRepository = bookRepository; }
+	 */
 
 	/**
 	 * 
