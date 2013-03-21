@@ -26,14 +26,28 @@ public class BookListController {
 	@Inject
 	private BookRepository bookRepository;
 
+	/**
+	 * 
+	 */
 	public BookListController() {
 		super();
 	}
 
+	/**
+	 * 
+	 * @param bookRepository
+	 *            current repo containing all books from library
+	 */
 	public BookListController(BookRepository bookRepository) {
 		this.bookRepository = bookRepository;
 	}
 
+	/**
+	 * 
+	 * @param modelMap
+	 *            map of library
+	 * @return command to execute
+	 */
 	@RequestMapping(method = RequestMethod.GET)
 	public String setupForm(ModelMap modelMap) {
 		List<Book> books = bookRepository.findAllBooks();
