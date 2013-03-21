@@ -37,4 +37,11 @@ public class StandardBookService implements BookService {
 		}
 
 	}
+
+	@Override
+	public List<Book> showAllBorrowedBooks(String string) {
+		List<Book> borrowBooks = bookRepository
+				.findAllBorrowBooksByBorrower(string);
+		return borrowBooks;
+	}
 }
