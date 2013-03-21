@@ -24,6 +24,12 @@ import de.codecentric.psd.worblehat.web.validator.ValidateReturnAllBooks;
  * 
  */
 
+/**
+ * Controller for showing borrowed books from a user.
+ * 
+ * @author asf16
+ * 
+ */
 @Controller
 @RequestMapping("/showBorrowed")
 public class ShowBorrowedController {
@@ -40,15 +46,35 @@ public class ShowBorrowedController {
 		super();
 	}
 
+	/**
+	 * 
+	 * @param bookRepository
+	 *            current book repository
+	 */
 	public ShowBorrowedController(BookRepository bookRepository) {
 		this.bookRepository = bookRepository;
 	}
 
+	/**
+	 * 
+	 * @param modelMap
+	 *            map of library
+	 */
 	@RequestMapping(method = RequestMethod.GET)
 	public void setupForm(ModelMap modelMap) {
 		modelMap.put("showBorrowedFormData", new ShowBorrowedFormData());
 	}
 
+	/**
+	 * 
+	 * @param modelMap
+	 *            map of library
+	 * @param formdata
+	 *            form data for brrowed books
+	 * @param result
+	 *            result handler
+	 * @return command to execute
+	 */
 	@RequestMapping(method = RequestMethod.POST)
 	public String showBorrowedBooks(
 			ModelMap modelMap,
