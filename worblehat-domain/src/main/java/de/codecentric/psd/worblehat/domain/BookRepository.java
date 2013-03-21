@@ -27,6 +27,7 @@ public class BookRepository {
 	 * Constructor for test.
 	 * 
 	 * @param em
+	 *            entity manager
 	 */
 	public BookRepository(EntityManager em) {
 		this.em = em;
@@ -53,12 +54,30 @@ public class BookRepository {
 		return query.getResultList();
 	}
 
+	/**
+	 * 
+	 * @param email
+	 *            a valid email of a book entity
+	 * @param isbn
+	 *            a valid ISBN_10 of a book entity
+	 * @return book from database
+	 */
 	public Book findBookByUserAndISBN(String email, String isbn) {
 		Query query = em.createQuery("form Book where isbn =? and email= ?")
 				.setParameter(1, isbn).setParameter(2, email);
 		return (Book) query.getSingleResult();
 	}
 
+	/**
+	 * 
+	 * @param author
+	 *            valid author of book
+	 * @param isbn
+	 *            a valid ISBN_10 of a book entity
+	 * @param title
+	 *            title for book
+	 * @return book from database
+	 */
 	public boolean isBookInRepository(String author, String isbn, String title) {
 		Query query = em
 				.createQuery("from Book where author = :author and isbn = :isbn and title = :title ");
@@ -120,5 +139,4 @@ public class BookRepository {
 		Query query = em.createNamedQuery("findAllBooks");
 		return query.getResultList();
 	}
-
 }

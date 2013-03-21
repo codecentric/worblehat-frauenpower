@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 /**
  * 
- * Controller for Navigation
+ * Controller for Navigation.
  * 
  * @author mahmut.can
  * 
@@ -14,6 +14,10 @@ import org.springframework.web.bind.annotation.RequestMethod;
 @Controller
 public class NavigationController {
 
+	/**
+	 * 
+	 * @return command to execute
+	 */
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public String home() {
 		return "/home";

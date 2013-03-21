@@ -17,6 +17,11 @@ public class BookDataFormData {
 		return year;
 	}
 
+	/**
+	 * 
+	 * @param year
+	 *            year the book was published
+	 */
 	public void setYear(String year) {
 
 		boolean exists = year != null;
@@ -31,6 +36,11 @@ public class BookDataFormData {
 		return isbn;
 	}
 
+	/**
+	 * 
+	 * @param isbn
+	 *            isbn of book
+	 */
 	public void setIsbn(String isbn) {
 
 		boolean exists = isbn != null;
@@ -45,6 +55,11 @@ public class BookDataFormData {
 		return author;
 	}
 
+	/**
+	 * 
+	 * @param author
+	 *            author of book
+	 */
 	public void setAuthor(String author) {
 		this.author = author;
 	}
@@ -53,6 +68,11 @@ public class BookDataFormData {
 		return abstr;
 	}
 
+	/**
+	 * 
+	 * @param abstr
+	 *            description of book
+	 */
 	public void setAbstract(String abstr) {
 		this.abstr = abstr;
 	}
@@ -61,6 +81,11 @@ public class BookDataFormData {
 		return title;
 	}
 
+	/**
+	 * 
+	 * @param title
+	 *            title of book
+	 */
 	public void setTitle(String title) {
 		this.title = title;
 	}
@@ -69,6 +94,11 @@ public class BookDataFormData {
 		return edition;
 	}
 
+	/**
+	 * 
+	 * @param edition
+	 *            edition of book
+	 */
 	public void setEdition(String edition) {
 		this.edition = edition;
 	}
