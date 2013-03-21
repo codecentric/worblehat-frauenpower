@@ -10,6 +10,9 @@ public class DeleteBookFormData {
 
 	private String isbn;
 
+	/**
+	 * 
+	 */
 	public DeleteBookFormData() {
 		super();
 	}
