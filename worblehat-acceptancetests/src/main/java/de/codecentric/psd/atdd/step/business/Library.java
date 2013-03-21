@@ -66,6 +66,9 @@ public class Library {
 	// TODO: klappt String für date??
 			throws SQLException {
 		List<String> isbnList = getListOfItems(isbns);
+		List<String> borrowDateList = getListOfItems(borrowDate);
+		int currentIndex = 0;
+
 		for (String isbn : isbnList) {
 			database.execute("INSERT INTO Book(title,author,edition,isbn,year,abstract) VALUES "
 					+ "('Title', 'Author', '1', '"
@@ -73,10 +76,15 @@ public class Library {
 					+ "', 2011, 'description')");
 			String bookId = database.getResult("SELECT  LAST_INSERT_ID()");
 			database.execute("INSERT INTO Borrowing(borrowDate, borrowerEmailAddress) VALUES "
-					+ "('" + borrowDate + "', '" + user + "')");
+					+ "('"
+					+ borrowDateList.get(currentIndex)
+					+ "', '"
+					+ user
+					+ "')");
 			String borrowingId = database.getResult("SELECT  LAST_INSERT_ID()");
 			database.execute("UPDATE Book SET currentBorrowing_id = "
 					+ borrowingId + " WHERE id = " + bookId);
+			currentIndex++;
 
 		}
 	}

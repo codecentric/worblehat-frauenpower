@@ -11,15 +11,16 @@ import java.sql.Statement;
 
 import org.jbehave.core.annotations.BeforeStories;
 
-
 public class DatabaseAdapter {
 
 	private Connection connection;
 
 	@BeforeStories
-	public void connectToDatabase() throws InstantiationException, IllegalAccessException, ClassNotFoundException, SQLException {
+	public void connectToDatabase() throws InstantiationException,
+			IllegalAccessException, ClassNotFoundException, SQLException {
 		Class.forName("com.mysql.jdbc.Driver").newInstance();
-		this.connection = DriverManager.getConnection(Config.getDbURL(),Config.getDbUser(),Config.getDbPassword());
+		this.connection = DriverManager.getConnection(Config.getDbURL(),
+				Config.getDbUser(), Config.getDbPassword());
 
 	}
 
@@ -27,8 +28,7 @@ public class DatabaseAdapter {
 		return connection;
 	}
 
-	public void emptyTable(String table)
-			throws SQLException {
+	public void emptyTable(String table) throws SQLException {
 		String statement = "DELETE FROM " + table;
 		execute(statement);
 	}
@@ -47,7 +47,7 @@ public class DatabaseAdapter {
 		assertThat(resultSet.first(), is(false));
 	}
 
-	private ResultSet getResultSet(String statement) throws SQLException {
+	public ResultSet getResultSet(String statement) throws SQLException {
 		Statement s = connection.createStatement();
 		s.execute(statement);
 		ResultSet resultSet = s.getResultSet();
@@ -60,7 +60,8 @@ public class DatabaseAdapter {
 		return resultSet.getString(1);
 	}
 
-	public String executeAndReturn(String statement, String column) throws SQLException {
+	public String executeAndReturn(String statement, String column)
+			throws SQLException {
 		ResultSet resultSet = getResultSet(statement);
 		resultSet.first();
 		return resultSet.getString(column);

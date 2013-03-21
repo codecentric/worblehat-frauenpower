@@ -17,6 +17,5 @@ Then the books <isbns> are sorted by return date
 
 Examples:
     
-| user            | isbns                 | borrowDate   |
-| user1@dings.com | 0321293533            | 2013-03-21   |
-| user1@dings.com | 1234567962            | 2013-03-20   |
+| user            | isbns                 | borrowDate  |
+| user1@dings.com | 0321293533 1234567962 | 2013-03-20 2013-03-21 |
