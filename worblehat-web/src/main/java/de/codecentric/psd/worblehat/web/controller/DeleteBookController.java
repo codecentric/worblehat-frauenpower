@@ -22,6 +22,12 @@ import de.codecentric.psd.worblehat.web.command.DeleteBookFormData;
  * 
  */
 
+/**
+ * Controller for deleting books by isbn.
+ * 
+ * @author asf16
+ * 
+ */
 @Controller
 @RequestMapping("/deleteBook")
 public class DeleteBookController {
@@ -33,15 +39,35 @@ public class DeleteBookController {
 		super();
 	}
 
+	/**
+	 * 
+	 * @param bookRepository
+	 *            current book repo
+	 */
 	public DeleteBookController(BookRepository bookRepository) {
 		this.bookRepository = bookRepository;
 	}
 
+	/**
+	 * 
+	 * @param modelMap
+	 *            current map of library
+	 */
 	@RequestMapping(method = RequestMethod.GET)
 	public void setupForm(ModelMap modelMap) {
 		modelMap.put("deleteBookFormData", new DeleteBookFormData());
 	}
 
+	/**
+	 * 
+	 * @param modelMap
+	 *            map of library
+	 * @param formdata
+	 *            form data for deleting books
+	 * @param result
+	 *            result handler
+	 * @return command to execute
+	 */
 	@RequestMapping(method = RequestMethod.POST)
 	public String deleteBook(ModelMap modelMap,
 			@ModelAttribute("deleteBookFormData") DeleteBookFormData formdata,
