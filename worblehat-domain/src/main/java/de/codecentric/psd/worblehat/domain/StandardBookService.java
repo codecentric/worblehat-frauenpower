@@ -19,14 +19,25 @@ public class StandardBookService implements BookService {
 	@Autowired
 	private BookRepository bookRepository;
 
+	/**
+	 * 
+	 * @param bookRepository
+	 *            current book repo containing all library book
+	 */
 	public StandardBookService(BookRepository bookRepository) {
 		this.bookRepository = bookRepository;
 	}
 
+	/**
+	 * Calls super constructor
+	 */
 	public StandardBookService() {
 		super();
 	}
 
+	/**
+	 * 
+	 */
 	@Override
 	public void returnAllBooksByBorrower(String string) {
 		List<Book> borrowBooks = bookRepository

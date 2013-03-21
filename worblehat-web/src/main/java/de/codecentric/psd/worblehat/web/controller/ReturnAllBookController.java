@@ -14,7 +14,7 @@ import de.codecentric.psd.worblehat.web.command.ReturnAllBooksFormData;
 import de.codecentric.psd.worblehat.web.validator.ValidateReturnAllBooks;
 
 /**
- * Controller class for the
+ * Controller class for the return of book.
  * 
  * @author psd
  * 
@@ -28,11 +28,26 @@ public class ReturnAllBookController {
 	@Inject
 	private BookService bookService;
 
+	/**
+	 * 
+	 * @param modelMap
+	 *            map for library
+	 */
 	@RequestMapping(method = RequestMethod.GET)
 	public void prepareView(ModelMap modelMap) {
 		modelMap.put("returnAllBookFormData", new ReturnAllBooksFormData());
 	}
 
+	/**
+	 * 
+	 * @param modelMap
+	 *            map for library
+	 * @param formData
+	 *            for data for return of book
+	 * @param result
+	 *            result handler
+	 * @return command to execute
+	 */
 	@RequestMapping(method = RequestMethod.POST)
 	public String returnAllBooks(
 			ModelMap modelMap,
