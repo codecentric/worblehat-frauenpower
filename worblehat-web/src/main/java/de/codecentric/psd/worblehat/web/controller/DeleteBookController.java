@@ -50,9 +50,15 @@ public class DeleteBookController {
 		if (result.hasErrors()) {
 			return "/deleteBook";
 		} else {
-			List<Book> booklist = bookRepository.findBooksByISBN(formdata
-					.getIsbn());
-			bookRepository.deleteBook(booklist.get(0));
+			try {
+				List<Book> booklist = bookRepository.findBooksByISBN(formdata
+						.getIsbn());
+				bookRepository.deleteBook(booklist.get(0));
+
+			} catch (Exception e) {
+				// TODO: handle exception
+			}
+
 			return "/home";
 		}
 
