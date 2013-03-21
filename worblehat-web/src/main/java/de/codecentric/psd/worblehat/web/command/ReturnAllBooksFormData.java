@@ -33,6 +33,11 @@ public class ReturnAllBooksFormData {
 		return emailAddress;
 	}
 
+	/**
+	 * 
+	 * @param emailAddress
+	 *            email address from form
+	 */
 	public void setEmailAddress(String emailAddress) {
 
 		boolean exists = emailAddress != null;
