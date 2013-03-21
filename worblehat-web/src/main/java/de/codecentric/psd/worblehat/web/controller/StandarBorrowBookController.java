@@ -33,19 +33,43 @@ public class StandarBorrowBookController {
 	private BookRepository bookRepository;
 	private ValidateBorrowBook validator = new ValidateBorrowBook();
 
+	/**
+	 * 
+	 * @param bookRepository
+	 *            contains all books currently inthe library
+	 */
 	@Inject
 	public StandarBorrowBookController(BookRepository bookRepository) {
 		this.bookRepository = bookRepository;
 	}
 
+	/**
+	 * 
+	 */
 	public StandarBorrowBookController() {
 	}
 
+	/**
+	 * 
+	 * @param model
+	 *            model of library
+	 */
 	@RequestMapping(method = RequestMethod.GET)
 	public void setupForm(final ModelMap model) {
 		model.put("borrowFormData", new BookBorrowFormData());
 	}
 
+	/**
+	 * 
+	 * @param modelMap
+	 *            current model map
+	 * @param cmd
+	 *            form containing user input
+	 * @param result
+	 *            result handler
+	 * 
+	 * @return command to execute
+	 */
 	@Transactional
 	@RequestMapping(method = RequestMethod.POST)
 	public String processSubmit(ModelMap modelMap,
@@ -76,10 +100,23 @@ public class StandarBorrowBookController {
 		return "/home";
 	}
 
+	/**
+	 * 
+	 * @param validater
+	 *            validator for borrow book form data
+	 */
 	public void setValidator(ValidateBorrowBook validater) {
 		this.validator = validater;
 	}
 
+	/**
+	 * 
+	 * @param ex
+	 *            exception handler
+	 * @param request
+	 *            http request for command execution
+	 * @return command to execute
+	 */
 	@ExceptionHandler(Exception.class)
 	public String handleErrors(Exception ex, HttpServletRequest request) {
 		return "/home";

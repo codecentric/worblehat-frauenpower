@@ -46,11 +46,28 @@ public class InsertBookController {
 		this.bookFactory = bookFactory;
 	}
 
+	/**
+	 * 
+	 * @param modelMap
+	 *            map for library
+	 */
 	@RequestMapping(method = RequestMethod.GET)
 	public void setupForm(ModelMap modelMap) {
 		modelMap.put("bookDataFormData", new BookDataFormData());
 	}
 
+	/**
+	 * 
+	 * @param request
+	 *            http request
+	 * @param modelMap
+	 *            map for library
+	 * @param cmd
+	 *            for data for book
+	 * @param result
+	 *            result handler
+	 * @return command to execute
+	 */
 	@RequestMapping(method = RequestMethod.POST)
 	public String processSubmit(HttpServletRequest request, ModelMap modelMap,
 			@ModelAttribute("bookDataFormData") BookDataFormData cmd,

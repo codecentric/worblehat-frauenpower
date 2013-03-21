@@ -1,17 +1,10 @@
 package de.codecentric.psd.worblehat.web.command;
 
-/**
- * This class represent the form data of the return book form.
- * 
- * @author psd
- * 
- */
-public class ReturnAllBooksFormData {
+public class ShowBorrowedFormData {
 
-	/**
-	 * Empty constructor, required by Spring Framework.
-	 */
-	public ReturnAllBooksFormData() {
+	private String emailAddress;
+
+	public ShowBorrowedFormData() {
 		super();
 	}
 
@@ -19,7 +12,7 @@ public class ReturnAllBooksFormData {
 	 * @param emailAddress
 	 *            the user email address
 	 */
-	public ReturnAllBooksFormData(String emailAddress) {
+	public ShowBorrowedFormData(String emailAddress) {
 		if (emailAddress != null) {
 			this.emailAddress = emailAddress.replaceAll(" ", "");
 		} else {
@@ -27,17 +20,10 @@ public class ReturnAllBooksFormData {
 		}
 	}
 
-	private String emailAddress;
-
 	public String getEmailAddress() {
 		return emailAddress;
 	}
 
-	/**
-	 * 
-	 * @param emailAddress
-	 *            email address from form
-	 */
 	public void setEmailAddress(String emailAddress) {
 
 		boolean exists = emailAddress != null;

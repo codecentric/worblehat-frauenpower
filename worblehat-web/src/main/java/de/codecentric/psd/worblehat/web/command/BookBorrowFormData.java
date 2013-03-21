@@ -43,10 +43,19 @@ public class BookBorrowFormData {
 		}
 	}
 
+	/**
+	 * 
+	 * @return isbn from user form
+	 */
 	public String getIsbn() {
 		return isbn;
 	}
 
+	/**
+	 * 
+	 * @param isbn
+	 *            isbn from user from
+	 */
 	public void setIsbn(String isbn) {
 
 		boolean exists = isbn != null;
@@ -61,6 +70,11 @@ public class BookBorrowFormData {
 		return email;
 	}
 
+	/**
+	 * 
+	 * @param email
+	 *            email of borrower
+	 */
 	public void setEmail(String email) {
 		boolean exists = email != null;
 		if (exists) {
