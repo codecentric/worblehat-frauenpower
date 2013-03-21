@@ -50,7 +50,6 @@ public class StandardBookService implements BookService {
 	public List<Book> showAllBorrowedBooks(String string) {
 		List<Book> borrowBooks = bookRepository
 				.findAllBorrowBooksByBorrower(string);
-		borrowBooks.get(1).
 		return borrowBooks;
 	}
 }
