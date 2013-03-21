@@ -73,6 +73,7 @@ public class BookBorrowFormData {
 	/**
 	 * 
 	 * @param email
+	 *            email of borrower
 	 */
 	public void setEmail(String email) {
 		boolean exists = email != null;

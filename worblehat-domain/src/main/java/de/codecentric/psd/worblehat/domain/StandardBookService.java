@@ -29,15 +29,12 @@ public class StandardBookService implements BookService {
 	}
 
 	/**
-	 * Calls super constructor
+	 * Calls super constructor.
 	 */
 	public StandardBookService() {
 		super();
 	}
 
-	/**
-	 * 
-	 */
 	@Override
 	public void returnAllBooksByBorrower(String string) {
 		List<Book> borrowBooks = bookRepository

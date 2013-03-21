@@ -14,7 +14,7 @@ import javax.persistence.NamedQuery;
 import javax.persistence.OneToOne;
 
 /**
- * Entity implementation class for Entity: Book
+ * Entity implementation class for Entity: Book.
  * 
  */
 @Entity
@@ -61,6 +61,8 @@ public class Book implements Serializable {
 	 *            the isbn
 	 * @param year
 	 *            the year
+	 * @param abstr
+	 *            short descritpion
 	 */
 	public Book(String title, String author, String edition, String isbn,
 			int year, String abstr) {

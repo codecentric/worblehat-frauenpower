@@ -20,6 +20,7 @@ public class BookDataFormData {
 	/**
 	 * 
 	 * @param year
+	 *            year the book was published
 	 */
 	public void setYear(String year) {
 
@@ -38,6 +39,7 @@ public class BookDataFormData {
 	/**
 	 * 
 	 * @param isbn
+	 *            isbn of book
 	 */
 	public void setIsbn(String isbn) {
 
@@ -56,6 +58,7 @@ public class BookDataFormData {
 	/**
 	 * 
 	 * @param author
+	 *            author of book
 	 */
 	public void setAuthor(String author) {
 		this.author = author;
@@ -68,6 +71,7 @@ public class BookDataFormData {
 	/**
 	 * 
 	 * @param abstr
+	 *            description of book
 	 */
 	public void setAbstract(String abstr) {
 		this.abstr = abstr;
@@ -80,6 +84,7 @@ public class BookDataFormData {
 	/**
 	 * 
 	 * @param title
+	 *            title of book
 	 */
 	public void setTitle(String title) {
 		this.title = title;
@@ -92,6 +97,7 @@ public class BookDataFormData {
 	/**
 	 * 
 	 * @param edition
+	 *            edition of book
 	 */
 	public void setEdition(String edition) {
 		this.edition = edition;
