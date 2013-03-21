@@ -1,9 +1,18 @@
 package de.codecentric.psd.worblehat.web.command;
 
+/**
+ * Form for showing borrowed books of a user identified via email address.
+ * 
+ * @author asf16
+ * 
+ */
 public class ShowBorrowedFormData {
 
 	private String emailAddress;
 
+	/**
+	 * 
+	 */
 	public ShowBorrowedFormData() {
 		super();
 	}
@@ -24,6 +33,11 @@ public class ShowBorrowedFormData {
 		return emailAddress;
 	}
 
+	/**
+	 * 
+	 * @param emailAddress
+	 *            email address
+	 */
 	public void setEmailAddress(String emailAddress) {
 
 		boolean exists = emailAddress != null;
