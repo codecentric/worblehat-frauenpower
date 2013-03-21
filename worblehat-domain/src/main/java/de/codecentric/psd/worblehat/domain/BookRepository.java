@@ -72,11 +72,11 @@ public class BookRepository {
 	}
 
 	public void deleteBook(Book book) {
-		Query query = em
-				.createQuery("delete from Book where author = :author and isbn = :isbn and title = :title");
-		query.setParameter("author", book.getAuthor());
+		Query query = em.createQuery("delete from Book where isbn = :isbn");
+		// query.setParameter("author", book.getAuthor());
 		query.setParameter("isbn", book.getIsbn());
-		query.setParameter("title", book.getTitle());
+		// query.setParameter("title", book.getTitle());
+		// query.setParameter("edition", book.getEdition());
 		query.executeUpdate();
 	}
 
