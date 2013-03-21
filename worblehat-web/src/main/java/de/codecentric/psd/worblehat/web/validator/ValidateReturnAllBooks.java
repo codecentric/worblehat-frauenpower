@@ -37,10 +37,9 @@ public class ValidateReturnAllBooks implements Validator {
 			ReturnAllBooksFormData cmd) {
 		ValidationUtils.rejectIfEmptyOrWhitespace(errors, "emailAddress",
 				"empty");
-		if (!errors.hasFieldErrors("emailAddress")) {
-			if (!EmailValidator.getInstance().isValid(cmd.getEmailAddress())) {
-				errors.rejectValue("emailAddress", "notvalid");
-			}
+		if (!errors.hasFieldErrors("emailAddress")
+				&& !EmailValidator.getInstance().isValid(cmd.getEmailAddress())) {
+			errors.rejectValue("emailAddress", "notvalid");
 		}
 	}
 

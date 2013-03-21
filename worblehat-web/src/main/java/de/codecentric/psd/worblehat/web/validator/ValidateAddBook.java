@@ -43,20 +43,18 @@ public class ValidateAddBook implements Validator {
 	private void checkThatAbstractisFilledAndValid(Errors errors,
 			BookDataFormData cmd) {
 		ValidationUtils.rejectIfEmptyOrWhitespace(errors, "abstract", "empty");
-		if (!errors.hasFieldErrors("abstract")) {
-			if (StringUtils.length(cmd.getAbstract()) > 5000) {
-				errors.rejectValue("abstract", "letters");
-			}
+		if (!errors.hasFieldErrors("abstract")
+				&& StringUtils.length(cmd.getAbstract()) > 5000) {
+			errors.rejectValue("abstract", "letters");
 		}
 	}
 
 	private void checkThatEditionisFilledAndValid(Errors errors,
 			BookDataFormData cmd) {
 		ValidationUtils.rejectIfEmptyOrWhitespace(errors, "edition", "empty");
-		if (!errors.hasFieldErrors("edition")) {
-			if (!StringUtils.isNumeric(cmd.getEdition())) {
-				errors.rejectValue("edition", "notvalid");
-			}
+		if (!errors.hasFieldErrors("edition")
+				&& !StringUtils.isNumeric(cmd.getEdition())) {
+			errors.rejectValue("edition", "notvalid");
 		}
 	}
 

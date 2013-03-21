@@ -62,7 +62,8 @@ public class BookBorrowFormData {
 	}
 
 	public void setEmail(String email) {
-		if (email != null) {
+		boolean exists = email != null;
+		if (exists) {
 			this.email = email.replaceAll(" ", "");
 		} else {
 			this.email = email;
